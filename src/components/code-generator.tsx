@@ -49,10 +49,11 @@ export default function CodeGenerator() {
         const size = Math.min(containerWidth, 300); // Limit max size to 300px
         await QRCode.toCanvas(canvas, qrValue || ' ', {
           width: size,
-          height: size,
+          // Remove the height property
+          // height: size,
         });
         canvas.style.width = `${size}px`;
-        canvas.style.height = `${size}px`;
+        canvas.style.height = `${size}px`; // Set height via style instead
         setGeneratedCode(canvas.toDataURL('image/png'));
       }
       setError('');
